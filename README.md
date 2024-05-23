@@ -16,7 +16,7 @@
 
 * 字符型：LONGBLOB、LONGTEXT、MEDIUMBLOB、MEDIUMTEXT、BLOB、TEXT、TINYBLOB、TINYTEXT、VARCHAR、CHAR、BINARY、VARBINARY
 * 整型：BIGINT、INT、MEDIUMINT、SMALLINT、TINYINT、BIT
-* 浮点型：DOUBLE、FLOAT、DECIMAL、MONEY
+* 浮点型：DOUBLE、FLOAT、DECIMAL
 * 布尔型：BOOLEAN
 * 日期型：TIMESTAMP、DATETIME、YEAR、DATE、TIME
 
@@ -28,7 +28,7 @@
 * 整型：BIGINT、INT、SMALLINT、TINYINT、BIT、SMALLSERIAL、SERIAL、BIGSERIAL、MONEY
 * 浮点型：DOUBLE、REAL、DECIMAL
 * 布尔型：BOOLEAN
-* 日期型：TIMESTAMP、DATETIME、YEAR、DATE、TIME
+* 日期型：TIMESTAMP、YEAR、DATE、TIME
 
 ## DuckDB
 
@@ -53,6 +53,12 @@ DuckDB的优势：
 
 ## 技巧整理
 
+### 类型转换
+
+* 整数值转换为FLOAT时，会因为FLOAT存储精度有限导致的四舍五入而造成一些值的不一致
+* 数值类型做比较时，如果需要转换，默认转换为双精度DOUBLE类型比较
+* 使用BLOB类型时，应用内要记得转换编码
+
 ### 极端值整理
 
 | Name                      | Min                                     | Max                                     |
@@ -70,3 +76,8 @@ DuckDB的优势：
 | FLOAT/REAL（精度至少6位） | 1e-37                                   | 1e+37                                   |
 | DOUBLE（精度至少15位）    | 1e-307                                  | 1e+308                                  |
 | MONEY（精度两位小数）     | -92233720368547758.08                   | +92233720368547758.07                   |
+
+### 一些有用工具
+
+[https://dbfiddle.uk/](https://dbfiddle.uk/)
+[https://www.db-fiddle.com/](https://www.db-fiddle.com/)
